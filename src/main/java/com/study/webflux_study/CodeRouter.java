@@ -26,6 +26,8 @@ public class CodeRouter {
     public RouterFunction<ServerResponse> routerFunction (ServiceHandler handler){
         return RouterFunctions.route(RequestPredicates.GET("/service/{id}"), handler::getService)
                 .andRoute(RequestPredicates.GET("/service"), handler::getServices)
-                .andRoute(RequestPredicates.POST("/service"), handler::createService);
+                .andRoute(RequestPredicates.POST("/service"), handler::createService)
+                .andRoute(RequestPredicates.PUT("/service/{id}"), handler::updateService)
+                .andRoute(RequestPredicates.DELETE("/service/{id}"), handler::deleteService);
     }
 }

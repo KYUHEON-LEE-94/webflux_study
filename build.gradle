@@ -1,3 +1,4 @@
+
 plugins {
     id 'java'
     id 'org.springframework.boot' version '3.1.5'
@@ -9,6 +10,15 @@ version = '0.0.1-SNAPSHOT'
 
 java {
     sourceCompatibility = '17'
+    targetCompatibility = '17'
+}
+
+configurations {
+    all{
+        //logback과 slf4j 제외 (log4j2와 충돌때문에)
+        exclude group: 'ch.qos.logback', module: 'logback-classic'
+        exclude group: 'org.apache.logging.log4j', module: 'log4j-to-slf4j'
+    }
 }
 
 repositories {
@@ -16,11 +26,17 @@ repositories {
 }
 
 dependencies {
+
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-log4j2'
+    //Mongo DB
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+    annotationProcessor 'org.projectlombok:lombok' //자바 컴파일러가 Lombok 의 annotation 을 인식하고 동작을 수행할 수 있도록 정의해 주어야 하는 것.
     compileOnly 'org.projectlombok:lombok'
+
+    testImplementation group: 'de.flapdoodle.embed', name: 'de.flapdoodle.embed.mongo', version: '2.2.0'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'io.projectreactor:reactor-test'
 }

@@ -1,7 +1,9 @@
 package com.study.webflux_study.service;
 
 import com.study.webflux_study.entitiy.AccountEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.server.ServerRequest;
@@ -27,14 +29,14 @@ import java.util.Optional;
 @Service
 public class ServiceHandler {
     private final ServiceRepository serviceRepository;
-
+    @Autowired
     public ServiceHandler(ServiceRepository serviceRepository) {
         this.serviceRepository = serviceRepository;
     }
 
     public Mono<ServerResponse> getService(ServerRequest request) {
         return serviceRepository.findById(request.pathVariable("id"))
-                .flatMap(service -> ServerResponse.ok().body(BodyInserters.fromValue(service)))
+                .flatMap(entity -> ServerResponse.ok().body(BodyInserters.fromValue(entity)))
                 .switchIfEmpty(ServerResponse.notFound().build());
     }
 
@@ -47,8 +49,8 @@ public class ServiceHandler {
 
     public Mono<ServerResponse> createService(ServerRequest request) {
         return request.bodyToMono(AccountEntity.class)
-                .flatMap(service -> serviceRepository.save(service))
-                .flatMap(service -> ServerResponse.created(URI.create("/service/" + service.getId())).build());
+                .flatMap(entity -> serviceRepository.save(entity))
+                .flatMap(entity -> ServerResponse.created(URI.create("/service/" + entity.getId())).build());
     }
 
     public Mono<ServerResponse> updateService(ServerRequest request) {
@@ -59,6 +61,12 @@ public class ServiceHandler {
                             return serviceRepository.save(existingService);
                         }))
                 .flatMap(service -> ServerResponse.noContent().build())
+                .switchIfEmpty(ServerResponse.notFound().build());
+    }
+
+    public Mono<ServerResponse> deleteService (ServerRequest request){
+        return serviceRepository.deleteById(request.pathVariable("id"))
+                .flatMap(result -> ServerResponse.noContent().build())
                 .switchIfEmpty(ServerResponse.notFound().build());
     }
 }

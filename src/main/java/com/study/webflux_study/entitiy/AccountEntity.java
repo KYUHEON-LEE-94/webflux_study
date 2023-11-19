@@ -1,8 +1,7 @@
 package com.study.webflux_study.entitiy;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
+import lombok.*;
 
 /**
  * packageName    : com.study.webflux_study.entitiy
@@ -15,9 +14,12 @@ import lombok.Getter;
  * -----------------------------------------------------------
  * 2023-11-15           heon               최초 생성
  */
-@Data
 @Entity
 @Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class AccountEntity {
 
     @Id
