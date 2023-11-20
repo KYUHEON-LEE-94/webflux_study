@@ -1,7 +1,9 @@
 package com.study.webflux_study.entitiy;
 
-import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 /**
  * packageName    : com.study.webflux_study.entitiy
@@ -14,17 +16,16 @@ import lombok.*;
  * -----------------------------------------------------------
  * 2023-11-15           heon               최초 생성
  */
-@Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Document(collection = "account")
 public class AccountEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
-    @Column
+    @Field(name = "name")
     private String name;
 }
