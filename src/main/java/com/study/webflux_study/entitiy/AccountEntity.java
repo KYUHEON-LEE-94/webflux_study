@@ -21,6 +21,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString
 @Document(collection = "account")
 public class AccountEntity {
 
