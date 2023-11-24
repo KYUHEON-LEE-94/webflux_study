@@ -1,8 +1,7 @@
-package com.study.webflux_study.service;
+package com.study.webflux_study.mongoService;
 
 import com.study.webflux_study.entitiy.AccountEntity;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
-import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import org.springframework.stereotype.Repository;
 
 /**

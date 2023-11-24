@@ -1,19 +1,14 @@
-package com.study.webflux_study.service;
+package com.study.webflux_study.mongoService;
 
 import com.study.webflux_study.entitiy.AccountEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
-import org.springframework.web.server.ResponseStatusException;
 import reactor.core.publisher.Mono;
 
 import java.net.URI;
-import java.util.List;
-import java.util.Optional;
 
 /**
  * packageName    : com.study.webflux_study.service

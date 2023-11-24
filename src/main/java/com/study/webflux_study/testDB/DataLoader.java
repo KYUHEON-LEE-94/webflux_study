@@ -1,7 +1,7 @@
 package com.study.webflux_study.testDB;
 
 import com.study.webflux_study.entitiy.AccountEntity;
-import com.study.webflux_study.service.ServiceRepository;
+import com.study.webflux_study.mongoService.ServiceRepository;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
