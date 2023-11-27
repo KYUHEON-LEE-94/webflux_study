@@ -1,7 +1,6 @@
 package com.study.webflux_study;
 
 import com.study.webflux_study.mongoService.ServiceHandler;
-import com.study.webflux_study.redis.redisService.RedisServiceHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.server.RequestPredicates;
@@ -24,12 +23,11 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 public class CodeRouter {
 
     @Bean
-    public RouterFunction<ServerResponse> routerFunction (ServiceHandler handler, RedisServiceHandler redisServiceHandler){
+    public RouterFunction<ServerResponse> routerFunction (ServiceHandler handler){
         return RouterFunctions.route(RequestPredicates.GET("/service/{id}"), handler::getService)
                 .andRoute(RequestPredicates.GET("/service"), handler::getServices)
                 .andRoute(RequestPredicates.POST("/service"), handler::createService)
                 .andRoute(RequestPredicates.PUT("/service/{id}"), handler::updateService)
-                .andRoute(RequestPredicates.DELETE("/service/{id}"), handler::deleteService)
-                .andRoute(RequestPredicates.GET("/redis"), redisServiceHandler::getService);
+                .andRoute(RequestPredicates.DELETE("/service/{id}"), handler::deleteService);
     }
 }
