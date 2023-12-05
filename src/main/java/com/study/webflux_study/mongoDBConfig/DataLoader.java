@@ -1,10 +1,14 @@
 package com.study.webflux_study.mongoDBConfig;
 
 import com.study.webflux_study.entitiy.AccountEntity;
+import com.study.webflux_study.eventDriven.consumer.EventSubscriber;
+import com.study.webflux_study.eventDriven.vo.OrderCanceledEvent;
+import com.study.webflux_study.eventDriven.vo.OrderEvent;
 import com.study.webflux_study.mongoService.ServiceRepository;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 
@@ -24,8 +28,10 @@ import reactor.core.publisher.Flux;
 public class DataLoader implements ApplicationRunner {
 
     private final ServiceRepository serviceRepository;
+    private final EventSubscriber eventSubscriber;
 
-    public DataLoader(ServiceRepository serviceRepository) {
+    public DataLoader(ServiceRepository serviceRepository, EventSubscriber eventSubscriber) {
+        this.eventSubscriber = eventSubscriber;
         this.serviceRepository = serviceRepository;
     }
 

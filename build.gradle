@@ -36,7 +36,10 @@ dependencies {
     //Redis DB
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     implementation 'org.springframework.boot:spring-boot-starter-data-redis-reactive'
-
+    //rabbitMQ
+    implementation 'org.springframework.boot:spring-boot-starter-amqp'
+    //jackson
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
 
     annotationProcessor 'org.projectlombok:lombok' //자바 컴파일러가 Lombok 의 annotation 을 인식하고 동작을 수행할 수 있도록 정의해 주어야 하는 것.
     compileOnly 'org.projectlombok:lombok'
