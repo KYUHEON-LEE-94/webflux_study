@@ -1,6 +1,7 @@
 package com.study.webflux_study.eventDriven.vo;
 
 import lombok.Getter;
+import lombok.ToString;
 
 import java.io.Serializable;
 
@@ -16,6 +17,7 @@ import java.io.Serializable;
  * 2023-12-05           heon               최초 생성
  */
 @Getter
+@ToString
 public class OrderEvent {
     private Long orderId;
     private String name;

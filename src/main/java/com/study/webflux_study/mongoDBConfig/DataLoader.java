@@ -25,6 +25,7 @@ import reactor.core.publisher.Flux;
  */
 @Component
 @Log4j2
+//프로필 설정에 따른 runner 제공 가능
 public class DataLoader implements ApplicationRunner {
 
     private final ServiceRepository serviceRepository;

@@ -4,6 +4,8 @@ import com.study.webflux_study.eventDriven.vo.OrderCanceledEvent;
 import com.study.webflux_study.eventDriven.vo.OrderEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
 
 /**
@@ -21,9 +23,22 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class EventSubscriber {
 
+    private final StringRedisTemplate stringRedisTemplate;
+
+    public EventSubscriber(StringRedisTemplate stringRedisTemplate) {
+        this.stringRedisTemplate = stringRedisTemplate;
+    }
+
     @RabbitListener(queues = "testQueue")
     public void handleOrderEvent(OrderEvent orderEvent) {
-        // 이벤트 처리 로직 작성
-        log.info("Received order event: {}", orderEvent.getOrderId());
+        log.info("Received order event: {}", orderEvent);
+
+        final String key = "stirng_key";
+
+        final ValueOperations<String, String> stirngStringValueOperations = stringRedisTemplate.opsForValue();
+        stirngStringValueOperations.set(key, orderEvent.getName());
+        final String result_1 = stirngStringValueOperations.get(key);
+        log.info("result_1: {}", result_1);
+
     }
 }

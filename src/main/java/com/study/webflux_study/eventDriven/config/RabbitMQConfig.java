@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  * fileName       : RabbitMQConfig
  * author         : heon
  * date           : 2023-12-05
- * description    :
+ * description    : 이벤트 구독(혹은 발행)을 JSON으로 하기 위한 설정
  * ===========================================================
  * DATE              AUTHOR             NOTE
  * -----------------------------------------------------------
