@@ -1,4 +1,4 @@
-package com.study.webflux_study.mongoService;
+package com.study.webflux_study.mongoDB.mongoService;
 
 import com.study.webflux_study.entitiy.AccountEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,7 @@ import reactor.core.publisher.Mono;
 import java.net.URI;
 
 /**
- * packageName    : com.study.webflux_study.service
+ * packageName    : com.study.webflux_study.NotificationService
  * fileName       : ServiceHandler
  * author         : heon
  * date           : 2023-11-15

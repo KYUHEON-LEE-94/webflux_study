@@ -1,6 +1,6 @@
-package com.study.webflux_study.mongoDBConfig;
+package com.study.webflux_study.mongoDB.mongoDBConfig;
 
-import com.study.webflux_study.mongoService.ServiceRepository;
+import com.study.webflux_study.mongoDB.mongoService.ServiceRepository;
 import org.springframework.context.event.ContextClosedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;

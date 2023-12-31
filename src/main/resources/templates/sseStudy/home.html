@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{base-layout}">
+
+<main layout:fragment="content">
+  본문 영역입니다.
+</main>
+<th:block layout:fragment="script">
+  <script th:src="@{/js/script.js}" defer="defer"></script>
+</th:block>
+
+</html>

@@ -1,6 +1,6 @@
-package com.study.webflux_study;
+package com.study.webflux_study.mongoDB.controller;
 
-import com.study.webflux_study.mongoService.ServiceHandler;
+import com.study.webflux_study.mongoDB.mongoService.ServiceHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.server.RequestPredicates;

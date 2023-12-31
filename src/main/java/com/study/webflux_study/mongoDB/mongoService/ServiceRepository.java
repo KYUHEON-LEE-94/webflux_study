@@ -1,11 +1,11 @@
-package com.study.webflux_study.mongoService;
+package com.study.webflux_study.mongoDB.mongoService;
 
 import com.study.webflux_study.entitiy.AccountEntity;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * packageName    : com.study.webflux_study.service
+ * packageName    : com.study.webflux_study.NotificationService
  * fileName       : ServiceRepository
  * author         : heon
  * date           : 2023-11-15

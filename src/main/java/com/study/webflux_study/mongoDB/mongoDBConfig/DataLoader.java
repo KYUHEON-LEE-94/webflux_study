@@ -1,14 +1,11 @@
-package com.study.webflux_study.mongoDBConfig;
+package com.study.webflux_study.mongoDB.mongoDBConfig;
 
 import com.study.webflux_study.entitiy.AccountEntity;
 import com.study.webflux_study.eventDriven.consumer.EventSubscriber;
-import com.study.webflux_study.eventDriven.vo.OrderCanceledEvent;
-import com.study.webflux_study.eventDriven.vo.OrderEvent;
-import com.study.webflux_study.mongoService.ServiceRepository;
+import com.study.webflux_study.mongoDB.mongoService.ServiceRepository;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 
