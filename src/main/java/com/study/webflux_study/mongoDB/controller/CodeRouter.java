@@ -24,7 +24,8 @@ public class CodeRouter {
 
     @Bean
     public RouterFunction<ServerResponse> routerFunction (ServiceHandler handler){
-        return RouterFunctions.route(RequestPredicates.GET("/service/{id}"), handler::getService)
+        return RouterFunctions
+                .route(RequestPredicates.GET("/service/{id}"), handler::getService)
                 .andRoute(RequestPredicates.GET("/service"), handler::getServices)
                 .andRoute(RequestPredicates.POST("/service"), handler::createService)
                 .andRoute(RequestPredicates.PUT("/service/{id}"), handler::updateService)

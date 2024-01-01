@@ -1,12 +1,17 @@
 package com.study.webflux_study.sse.service;
 
+import com.study.webflux_study.entitiy.AccountEntity;
+import com.study.webflux_study.mongoDB.mongoService.ServiceRepository;
 import com.study.webflux_study.sse.dto.EventPayload;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.MediaType;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
+import reactor.core.publisher.Flux;
 
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -25,13 +30,21 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Service
 @Log4j2
 public class SseEmitterService {
-    // thread-safe 한 컬렉션 객체로 sse emitter 객체를 관리해야 한다.
+    /*thread-safe 한 컬렉션 객체로 sse emitter 객체를 관리해야 한다.*/
     private final Map<String, SseEmitter> emitterMap = new ConcurrentHashMap<>();
     private static final long TIMEOUT = 60 * 1000;
     private static final long RECONNECTION_TIMEOUT = 1000L;
 
+//    private final SseEmitter emitter;
+
+
     //초기값 비교를 위한 증가
     private final AtomicInteger currentId = new AtomicInteger(0);
+
+    public SseEmitterService() {
+//        this.emitter = new SseEmitter();
+//        startSendingData();
+    }
 
     public SseEmitter subscribe(String id) {
         log.debug("id: {}", id);
@@ -95,8 +108,50 @@ public class SseEmitterService {
         });
     }
 
+
+
     /** Emitter 생성**/
     private SseEmitter createEmitter() {
         return new SseEmitter(TIMEOUT);
     }
+
+//    public SseEmitter getAllFromMongo(){
+//        return emitter;
+//    }
+//    @Scheduled(fixedDelay = 2000) // 2초마다 실행
+//    public void sendAccountData() {
+//        Flux<AccountEntity> allAccounts = serviceRepository.findAll();
+//        allAccounts.subscribe(
+//                accountEntity -> {
+//                    try {
+//                        // 데이터를 이벤트로 전송
+//                        emitter.send(accountEntity, MediaType.APPLICATION_JSON);
+//                    } catch (Exception e) {
+//                        // 예외 처리
+//                        emitter.completeWithError(e);
+//                    }
+//                }
+//        );
+//    }
+//
+//    private void startSendingData() {
+//        Thread thread = new Thread(() -> {
+//            while (true) {
+//                try {
+//                    // 주기적으로 데이터 전송 메서드 호출
+//                    sendAccountData();
+//                    Thread.sleep(2000); // 2초 대기
+//                } catch (InterruptedException e) {
+//                    // 예외 처리
+//                    emitter.completeWithError(e);
+//                    break;
+//                }
+//            }
+//        });
+//
+//        thread.setDaemon(true);
+//        thread.start();
+//    }
+
+
 }

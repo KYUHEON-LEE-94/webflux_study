@@ -2,10 +2,13 @@ package com.study.webflux_study.mongoDB.mongoService;
 
 import com.study.webflux_study.entitiy.AccountEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.net.URI;
@@ -42,6 +45,10 @@ public class ServiceHandler {
         // List는 리액티브하지 않은(non-reactive) 타입이기 때문에 해당 타입을 그대로 사용할 수 있습니다.
     }
 
+    public Flux<AccountEntity> getAll(){
+        return serviceRepository.findAll();
+    }
+
     public Mono<ServerResponse> createService(ServerRequest request) {
         return request.bodyToMono(AccountEntity.class)
                 .flatMap(entity -> serviceRepository.save(entity))
@@ -64,4 +71,6 @@ public class ServiceHandler {
                 .flatMap(result -> ServerResponse.noContent().build())
                 .switchIfEmpty(ServerResponse.notFound().build());
     }
+
+
 }

@@ -42,8 +42,8 @@ public class DataLoader implements ApplicationRunner {
         all.count().subscribe(count -> {
             if (count < 4) {
                 // DB에 저장된 데이터가 5개 미만일 때만 실행
-                AccountEntity example1 = new AccountEntity(null, "John Doe");
-                AccountEntity example2 = new AccountEntity(null, "Jane Smith");
+                AccountEntity example1 = new AccountEntity(null, "John Doe ");
+                AccountEntity example2 = new AccountEntity(null, "Jane Smith ");
 
                 // 데이터 삽입
                 serviceRepository.saveAll(Flux.just(example1, example2))

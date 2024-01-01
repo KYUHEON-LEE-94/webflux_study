@@ -2,6 +2,7 @@ package com.study.webflux_study.eventDriven.consumer;
 
 import com.study.webflux_study.eventDriven.vo.OrderCanceledEvent;
 import com.study.webflux_study.eventDriven.vo.OrderEvent;
+import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -20,7 +21,7 @@ import org.springframework.stereotype.Component;
  * 2023-12-05           heon               최초 생성
  */
 @Component
-@Slf4j
+@Log4j2
 public class EventSubscriber {
 
     private final StringRedisTemplate stringRedisTemplate;
