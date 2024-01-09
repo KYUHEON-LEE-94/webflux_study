@@ -1,5 +1,6 @@
 package com.study.webflux_study.redis.config;
 
+import com.study.webflux_study.redis.service.CacheRedisService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.DisplayName;
@@ -33,7 +34,7 @@ class BasicRedisConfigTest {
     @Test
     @DisplayName("opsForValue() 메소드를 사용해서 레디스 string 타입의 자료구조에 접근")
     void testStrings(){
-        final String key = "stirng_key";
+        final String key = "string_key";
 
         final ValueOperations<String, String> stirngStringValueOperations = stringRedisTemplate.opsForValue();
 
