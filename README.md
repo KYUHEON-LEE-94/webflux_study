@@ -7,7 +7,7 @@ WebFlux 기반 공부 프로젝트
 - webflux
 - Reactive redis
 - Reactive mongoDB
-- reactor
+- RabbitMQ
 ```
 
 ## 이 프로젝트를 통해 공부 中
@@ -21,8 +21,8 @@ WebFlux 기반 공부 프로젝트
   - [MongoDB 노션](https://www.notion.so/MongoDB-76d2c05c8c1d49fa99f3e798e74f248f?pvs=4, "노션 링크")
 
 
-### 이벤트 기반 아키텍처
-- Event 기반 아키텍처
-- 現 프로젝트는 Consumer 역할
-  - [publisher Application](https://github.com/KYUHEON-LEE-94/basic-eventDriven-publisher, "publisher")
+### 이벤트 기반 아키텍처 연습
+- RabbitMQ로 연습
+- 이 프로젝트는 Consumer
+- [publisher Application 프로젝트](https://github.com/KYUHEON-LEE-94/basic-eventDriven-publisher, "publisher")
   
